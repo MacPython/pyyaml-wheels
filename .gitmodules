@@ -1,0 +1,6 @@
+[submodule "pyyaml"]
+	path = pyyaml
+	url = https://github.com/yaml/pyyaml
+[submodule "terryfy"]
+	path = terryfy
+	url = git://github.com/MacPython/terryfy.git
