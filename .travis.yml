@@ -11,6 +11,7 @@ env:
 install:
   - source terryfy/travis_tools.sh
   - source terryfy/library_installers.sh
+  - clean_builds
   - standard_install yaml $LIBYAML_VERSION
   - get_python_environment macpython $VERSION venv
   - pip install delocate
