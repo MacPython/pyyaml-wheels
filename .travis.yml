@@ -14,7 +14,7 @@ install:
   - clean_builds
   - standard_install yaml $LIBYAML_VERSION
   - get_python_environment macpython $VERSION venv
-  - pip install delocate
+  - pip install delocate cython
   - if [ -n "$BUILD_COMMIT" ]; then
         checkout_commit pyyaml $BUILD_COMMIT;
     fi
