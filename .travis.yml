@@ -18,7 +18,8 @@ install:
   - if [ -n "$BUILD_COMMIT" ]; then
         checkout_commit pyyaml $BUILD_COMMIT;
     fi
-  - cp pyyaml_setup.cfg pyyaml/setup.cfg
+  - source yaml_tools.sh
+  - patch_setup_cfg
   - pip wheel -w wheelhouse ./pyyaml
   - delocate-listdeps wheelhouse/*.whl # lists library dependencies
   - delocate-wheel wheelhouse/*.whl # copies library dependencies into wheel
