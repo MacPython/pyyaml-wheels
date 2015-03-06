@@ -23,7 +23,6 @@ install:
   - delocate-wheel wheelhouse/*.whl # copies library dependencies into wheel
   - delocate-addplat --rm-orig -x 10_9 -x 10_10 wheelhouse/*.whl
   - pip install wheelhouse/*.whl
-  - cd ..
 script:
   # install dependencies for tests e.g - pip install nose
   # Run the tests
