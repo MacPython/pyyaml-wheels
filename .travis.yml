@@ -5,9 +5,9 @@ env:
   - BUILD_COMMIT='latest-tag'  # comment out to build version in submodule
   - LIBYAML_VERSION=0.1.5
   matrix:
-  - VERSION=2.7.8
+  - VERSION=2.7.9
   - VERSION=3.3.5
-  - VERSION=3.4.2
+  - VERSION=3.4.3
 install:
   - source terryfy/travis_tools.sh
   - source terryfy/library_installers.sh
@@ -18,7 +18,7 @@ install:
   - if [ -n "$BUILD_COMMIT" ]; then
         checkout_commit pyyaml $BUILD_COMMIT;
     fi
-  - pip wheel -w wheelhouse pyyaml
+  - pip wheel -w wheelhouse ./pyyaml
   - delocate-listdeps wheelhouse/*.whl # lists library dependencies
   - delocate-wheel wheelhouse/*.whl # copies library dependencies into wheel
   - delocate-addplat --rm-orig -x 10_9 -x 10_10 wheelhouse/*.whl
