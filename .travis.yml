@@ -18,18 +18,17 @@ install:
   - if [ -n "$BUILD_COMMIT" ]; then
         checkout_commit pyyaml $BUILD_COMMIT;
     fi
-  - cd pyyaml
-  - python setup.py bdist_wheel
-  - delocate-listdeps dist/*.whl # lists library dependencies
-  - delocate-wheel dist/*.whl # copies library dependencies into wheel
-  - delocate-addplat --rm-orig -x 10_9 -x 10_10 dist/*.whl
-  - pip install dist/*.whl
+  - pip wheel -w wheelhouse pyyaml
+  - delocate-listdeps wheelhouse/*.whl # lists library dependencies
+  - delocate-wheel wheelhouse/*.whl # copies library dependencies into wheel
+  - delocate-addplat --rm-orig -x 10_9 -x 10_10 wheelhouse/*.whl
+  - pip install wheelhouse/*.whl
   - cd ..
 script:
   # install dependencies for tests e.g - pip install nose
   # Run the tests
   - python run_tests.py
-before_deploy: cd pyyaml/dist
+before_deploy: cd wheelhouse
 deploy:
   provider: cloudfiles
   username: travis-worker
